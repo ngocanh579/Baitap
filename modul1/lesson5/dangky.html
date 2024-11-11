@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dangky</title>
+</head>
+<body>
+<form action="dangky.html" method="post">
+  <label>Ho va ten:</label><br>
+  <input type="text" name="ten" placeholder="" required><br>
+  <label>Email:</label><br>
+  <input type="text" name="email" placeholder="" required><br>
+  <label>So Dien Thoai:</label><br>
+  <input type="text" name="sdt" placeholder="" pattern="^[0-9]{10,11}$" title="Số điện thoại phải có 10 hoặc 11 chữ số" required ><br>
+  <label>Gioi tinh:</label>
+  <input type="radio" name="rdi"value="Nam">Nam
+  <input type="radio" name="rdi"value="Nu">Nu <br>
+  <input type="submit" name="btn"value="Submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+img{
+    width: 10%;
+    height: 10%;
+}
+body{
+    font-family: Verdana;
+    margin: 20px;
+}
+h1{
+    font-size: 20px;
+    font-weight: bold;
+}
+.gioithieu{
+    margin-bottom: 20px;
+}
+.gioithieu label{
+    font-weight: bold;
+}
+.gioithieu span{
+    margin-left: 20px;
+}
+.media{
+    margin-top: 20px;
+}
+.skill label{
+    font-weight: bold;
+}
+.media .video{
+    margin-top: 20px;
+    width: 40px;
+    height: 60px;
+}

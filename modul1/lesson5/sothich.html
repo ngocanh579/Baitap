@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>so thich</title>
+</head>
+<style>
+body{
+  background-color: lightgreen;
+  font-family: Arial, sans-serif;
+}
+.container{
+  width: 400px;
+  margin: 50px auto;
+  border: 1px solid #000;
+  background-color: #FFFFFF;
+}
+.header {
+  background-color: #FF4500;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.form{
+  margin: 15px;
+}
+.form label{
+  display: block;
+  margin-bottom: 5px;
+  color: darkblue;
+}
+.form input[type="text"] {
+  width: calc(100% - 10px);
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.form .checkbox{
+  display: flex;
+  flex-wrap: wrap;
+}.form .checkbox label{
+   margin-right: 20px;
+   color: #FF4500;
+}.form .checkbox input[type="checkbox"] {
+    margin-right: 5px;
+  }
+.form .button {
+  text-align: center;
+}
+.form .button input[type="button"] {
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: #D3D3D3;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+</style>
+<body>
+<div class="container">
+    <div class="header" >So Thich cua ban</div>
+    <div class="form">
+      <label>Ho va ten</label>
+      <input type="text" name="ten" value=""> </div>
+  <div class="form">
+    <label>Email</label>
+    <input type="text" name="emai" value=""></div>
+  <div class="form">
+    <label>Sở thích</label>
+    <div class="checkbox">
+      <label><input type="checkbox" name="hobby" value="the-thao"> Thể thao</label>
+      <label><input type="checkbox" name="hobby" value="am-nhac"> Âm nhạc</label>
+      <label><input type="checkbox" name="hobby" value="doc-sach"> Đọc sách</label>
+      <label><input type="checkbox" name="hobby" value="luot-web"> Lướt web</label>
+      <label><input type="checkbox" name="hobby" value="choi-game"> Chơi game</label>
+      <label><input type="checkbox" name="hobby" value="dien-anh"> Điện ảnh</label>
+      <label><input type="checkbox" name="hobby" value="du-lich"> Du lịch</label>
+    </div>
+    <div  class="button">
+      <input type="button" value="Gui thong tin">
+      <input type="button" value="Nhap lai">
+    </div>
+  </div>
+</div>
+<!-------------------------gang ky hoc vien-------------------->
+<div class="container">
+  <div class="header"> Dang ky hoc vien</div>
+  <form>
+    <div class="form">
+      <label>Ho va ten:</label><br>
+      <input type="text"  id="ten" name="ten" required><br>
+    </div>
+    <div class="form">
+      <label class="dk-lable">Ngay Sinh:</label><br>
+      <input type="date" name="ns" id="ns" required><br>
+    </div >
+    <div class="form">
+        <label class="">Gioi tinh:</label>
+        <div class="dk-radio">
+          <label><input type="radio" name="rdi"value="Nam">Nam</label>
+          <label><input type="radio" name="rdi"value="Nu">Nu </label>
+      </div>
+    </div>
+    <div class="form">
+      <label>Dia chi:</label><br>
+      <textarea  id="dc" name="dc" rows="4" > </textarea>
+    </div><div class="form">
+      <label>Lop:</label>
+     <select id="lop" name="lop">
+       <option>chon lop</option>
+       <option>a1</option>
+       <option>a2</option>
+       <option>a3</option>
+     </select>
+    </div>
+    <div class="form">
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email">
+    </div>
+    <div class="form">
+      <label for="phone">Điện thoại</label>
+      <input type="text" id="phone" name="phone">
+    </div>
+    <div class="button">
+      <input type="submit" value="Đăng ký">
+      <input type="reset" value="Nhập lại">
+    </div>
+  </form>
+
+</div>
+</body>
+</html>
