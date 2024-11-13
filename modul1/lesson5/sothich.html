@@ -59,33 +59,35 @@ body{
 <body>
 <div class="container">
     <div class="header" >So Thich cua ban</div>
-    <div class="form">
-      <label>Ho va ten</label>
-      <input type="text" name="ten" value=""> </div>
-  <div class="form">
-    <label>Email</label>
-    <input type="text" name="emai" value=""></div>
-  <div class="form">
-    <label>Sở thích</label>
-    <div class="checkbox">
-      <label><input type="checkbox" name="hobby" value="the-thao"> Thể thao</label>
-      <label><input type="checkbox" name="hobby" value="am-nhac"> Âm nhạc</label>
-      <label><input type="checkbox" name="hobby" value="doc-sach"> Đọc sách</label>
-      <label><input type="checkbox" name="hobby" value="luot-web"> Lướt web</label>
-      <label><input type="checkbox" name="hobby" value="choi-game"> Chơi game</label>
-      <label><input type="checkbox" name="hobby" value="dien-anh"> Điện ảnh</label>
-      <label><input type="checkbox" name="hobby" value="du-lich"> Du lịch</label>
-    </div>
-    <div  class="button">
-      <input type="button" value="Gui thong tin">
-      <input type="button" value="Nhap lai">
-    </div>
-  </div>
+    <form>
+      <div class="form">
+        <label>Ho va ten</label>
+        <input type="text" name="ten" value=""> </div>
+      <div class="form">
+        <label>Email</label>
+        <input type="text" name="emai" value=""></div>
+      <div class="form">
+        <label>Sở thích</label>
+        <div class="checkbox">
+          <label><input type="checkbox" name="hobby" value="the-thao"> Thể thao</label>
+          <label><input type="checkbox" name="hobby" value="am-nhac"> Âm nhạc</label>
+          <label><input type="checkbox" name="hobby" value="doc-sach"> Đọc sách</label>
+          <label><input type="checkbox" name="hobby" value="luot-web"> Lướt web</label>
+          <label><input type="checkbox" name="hobby" value="choi-game"> Chơi game</label>
+          <label><input type="checkbox" name="hobby" value="dien-anh"> Điện ảnh</label>
+          <label><input type="checkbox" name="hobby" value="du-lich"> Du lịch</label>
+        </div>
+        <div  class="button">
+          <input type="submit" value="Gui thong tin">
+          <input type="reset" value="Nhap lai">
+        </div>
+      </div>
+    </form>
 </div>
-<!-------------------------gang ky hoc vien-------------------->
+<!-------------------------dang ky hoc vien-------------------->
 <div class="container">
   <div class="header"> Dang ky hoc vien</div>
-  <form>
+  <form action="sothich.html" method="get">
     <div class="form">
       <label>Ho va ten:</label><br>
       <input type="text"  id="ten" name="ten" required><br>
