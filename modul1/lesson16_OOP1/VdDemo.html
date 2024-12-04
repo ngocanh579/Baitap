@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // huong thu tuc
+    // let LuongCoBan = 3000000 ;
+    // let GioLamThem = 20 ;
+    // let rate = 20 ;
+    // // khai bao ham
+    // function tinhluong(LuongCoBan,GioLamThem,){
+    //     // tinh logic nghiep vu
+    //     console.log(LuongCoBan);
+    //     console.log(GioLamThem);
+    //     console.log(rate);
+    //     return LuongCoBan + (GioLamThem * rate);
+    // }
+    // const luong = tinhluong(LuongCoBan,GioLamThem,rate);
+    // console.log(luong);
+    // ham k co return ,  mac dinh undefided cac tham so
+    // console.log(tinhluong(LuongCoBan,GioLamThem,rate)) // goi ham
+
+    // console.log(LuongCoBan);
+    // console.log(GioLamThem);
+    // console.log(rate);
+</script>
+<script>
+    // // OOP
+    // let nhanvien={
+    //     //thuoc tinh (Properties)
+    //     luongcoban:300000,
+    //     giolamthem:10,
+    //     rate:20,
+    //     // phuong thuc ( method)
+    //     nhanluong:function (){
+    //         return this.luongcoban + (this.giolamthem * this.rate); // this : truy cap thang doi tuong hien tai
+    //     }
+    // }
+    // console.log(nhanvien.nhanluong());
+
+    // cach khac
+    // function person(ten, tuoi, sdt){
+    //     this.ten = ten;
+    //     this.tuoi = tuoi;
+    //     this.sdt = sdt;
+    //      this.display = function (){
+    //          return `Ten la : ${this.ten} ,Tuoi la : ${this.tuoi} , SDT:${this.sdt}`;
+    //      };
+    // }
+    // const person1 = new person( "Nguyen", 25, "0123456789");
+    // console.log(person1.display());
+
+    // cach khac
+    class person {
+        #ten ;
+        #tuoi;
+        #sdt ;
+        constructor(ten, tuoi, sdt) {
+            this.#ten = ten;
+            this.#tuoi = tuoi;
+            this.#sdt = sdt;
+        }
+        display(){
+                  return `Ten la : ${this.#ten} ,Tuoi la : ${this.#tuoi} , SDT:${this.#sdt}`;
+        }
+    }
+    class diem extends person{
+        #gpq;
+
+        constructor(ten, tuoi, sdt, gpa) {
+            super(ten, tuoi, sdt, gpa);
+            this.#gpq = gpa ;
+        }
+        setTen
+    }
+    const pn1 = new person('mai',20,'09876456789');
+    console.log(pn1.display());
+
+</script>
+</body>
+</html>

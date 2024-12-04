@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Xây dựng lớp Date</title>
+</head>
+<body>
+<script>
+    // cach 1
+    function Date(ngay, thang, nam){
+        this.ngay = ngay;
+        this.thang = thang;
+        this.nam = nam;
+// ham get
+        this.getNgay = function(){
+            return this.ngay();
+        }
+        this.getThang = function(){
+            return this.thang();
+        }
+        this.getNam = function(){
+            return this.nam();
+        }
+// ham set
+        this.setNgay = function(ngay){
+            this.ngay = ngay;
+        }
+        this.setThang = function(thang){
+            this.thang= thang;
+        }
+        this.setNam = function(){
+            this.nam = nam;
+        }
+        this.display = function(){
+            return ` Ngay:${this.ngay} ,Thang:${this.thang}, Nam ${this.nam} `;
+        };
+    }
+    const date = new Date(17,12,2024);
+    console.log(date.display());
+    date.setNam();
+    date.setNgay();
+    date.setThang();
+</script>
+<script>
+    // cach 2
+    class Date {
+</script>
+</body>
+</html>
