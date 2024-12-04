@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+    <style>
+        form{
+            padding: 30px;
+            width: 40%;
+            height: 70px;
+            background-color: #D3D3D3;
+            border-radius: 10px;
+        }
+        input{
+            width: 50%;
+            height: 50%;
+            border-radius: 4px;
+            border-color:silver;
+        }
+        button{
+            width: 100px;
+            height: 40px;
+            border-color:silver;
+            border-radius: 4px;
+            background-color: chartreuse;
+        }
+        th:nth-child(1), td:nth-child(1) {
+            width: 60%; /* Chiều rộng cột Tên Sản Phẩm */
+        }
+        tr:nth-child(even){
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+<h3>Thêm Sản phẩm</h3>
+<form id="themsp">
+    <input type="text" name="addsp" id="addsp" placeholder="New Product" required>
+    <button type="button" id="add">Thêm</button>
+</form>
+<h3 id="soluong">Danh sách Tất cả sản phẩm </h3>
+<table id="danhsach">
+    <thead>
+    <tr>
+        <th>Tên Sản Phẩm</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Danh sách sản phẩm sẽ được hiển thị ở đây -->
+    </tbody>
+</table>
+<script>
+
+    // Mảng chứa danh sách sản phẩm ban đầu
+    let dssp = ["Sony Xperia", "Sam Sung Galaxy", "Nokia 6", "Xiaomi Redmi Note 4", "Apple iPhone 6S", "Xiaomi Mi 5s Plus", "Apple iPhone 8 Plus", "Fujitsu F-04E", "Oppo A71"];
+    // Hàm cập nhật tiêu đề hiển thị số lượng sản phẩm
+    function caphnhatsoluongsp() {
+        const title = document.getElementById("soluong");
+        title.textContent = `Danh sách Sản phẩm (${dssp.length})`; // Cập nhật tiêu đề
+    }
+    // Hàm hiển thị danh sách sản phẩm
+    function hienthidssp() {
+        // Tìm phần tbody trong bảng để hiển thị danh sách sản phẩm
+        const ds = document.querySelector("#danhsach tbody");
+        ds.innerHTML = ""; // Xóa nội dung bảng cũ trước khi thêm lại
+
+        // Duyệt qua từng sản phẩm trong mảng và tạo bảng
+        dssp.forEach((product, index) => {
+            const row = document.createElement("tr");
+
+            // Tạo ô cho tên sản phẩm
+            const nameCell = document.createElement("td");
+            nameCell.textContent = product;
+
+            // Tạo ô cho các nút sửa và xóa
+            const actionCell = document.createElement("td");
+
+            // Tạo nút sửa
+            const editButton = document.createElement("button");
+            editButton.textContent = "Sửa";
+            editButton.onclick = () => editProduct(index); // Gọi hàm sửa sản phẩm khi nhấn nút
+
+            // Tạo nút xóa
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Xóa";
+            deleteButton.onclick = () => deleteProduct(index); // Gọi hàm xóa sản phẩm khi nhấn nút
+
+            // Thêm nút vào ô hành động
+            actionCell.appendChild(editButton);
+            actionCell.appendChild(deleteButton);
+
+            // Thêm các ô vào dòng
+            row.appendChild(nameCell);
+            row.appendChild(actionCell);
+
+            // Thêm dòng vào bảng
+            ds.appendChild(row);
+        });
+        // goi ham cap nhat so luong san pham
+        caphnhatsoluongsp();
+    }
+    // Hàm thêm sản phẩm mới vào danh sách
+    function addProduct() {
+        const newProductName = document.getElementById("addsp").value; // Lấy tên sản phẩm từ ô nhập
+        if (newProductName) { // Nếu tên sản phẩm không rỗng
+            dssp.push(newProductName); // Thêm sản phẩm vào mảng dssp
+            document.getElementById("addsp").value = ""; // Xóa nội dung ô nhập sau khi thêm
+            hienthidssp(); // Cập nhật lại bảng sản phẩm
+            alert("Sản phẩm đã được thêm.");
+        } else {
+            alert("Vui lòng nhập tên sản phẩm.");
+        }
+    }
+
+    // Hàm sửa tên sản phẩm
+    function editProduct(index) {
+        // Mở hộp thoại prompt để sửa tên sản phẩm
+        const newName = prompt("Sửa tên sản phẩm:", dssp[index]);
+        if (newName && newName !== dssp[index]) {
+            dssp[index] = newName; // Cập nhật tên sản phẩm trong mảng
+            hienthidssp(); // Cập nhật lại bảng sau khi sửa
+            alert("Sản phẩm đã được sửa thành: " + newName);
+        }
+    }
+    // Hàm xóa sản phẩm
+    function deleteProduct(index) {
+        // Xác nhận trước khi xóa sản phẩm
+        if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+            dssp.splice(index, 1); // Xóa sản phẩm khỏi mảng
+            hienthidssp(); // Cập nhật lại bảng sau khi xóa
+            alert("Sản phẩm đã bị xóa.");
+        }
+    }
+    // Sự kiện khi nhấn nút "Thêm" sẽ gọi hàm addProduct
+    document.getElementById("add").addEventListener("click", addProduct);
+    // Gọi hàm hiển thị danh sách sản phẩm khi trang được tải
+    hienthidssp();
+</script>
+</body>
+</html>
