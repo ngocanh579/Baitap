@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // pass-by-value (truyền giá trị)
+    let counter = 10;
+    console.log(counter);
+    function increment (count){
+      count ++ ;
+      console.log(counter);
+    }
+    console.log(counter);
+    increment(counter);
+    console.log(counter);
+</script>
+
+<script>
+  let st =10;
+  let st2 = 20 ;
+  function swap (so1, so2){
+    let temp = so1 ; // 10
+    so1 = so2 ; //20
+    so2 = so1 ; // 20
+    console.log(so1);
+    console.log(so2);
+  }
+  console.log('so 1' +st);
+  console.log('so 2'+st2);
+  swap(st,st2);
+  console.log(st);
+  console.log(st2);
+</script>
+<script>
+  const arr =[10,20];
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    external-->
+    <script src=""></script>
+</head>
+<body>
+<!--internal-->
+<script>
+// thanh phan cua ham (function) , product
+//khai báo hàm
+function vd(name){
+    console.log('xin chao'+  name) ; //
+
+}
+// lời gọi hàm
+vd('mai lan');//goi ham
+// or
+function vd(name = 'linh'){
+    console.log('xin chao'+name);
+}
+vd();
+// cach 2 khai bao ham
+const say = function (name){
+    console.log('xin chao' + name);
+};
+say('Van');//goi ham
+const sayhello = name => console.log('xin chao' + name);
+sayhello('ngoc');
+// cách ngắn hơn
+//() -> {}
+const sum = (a,b) => a+b ;
+console.log(sum(4,7));
+const chao = 'xin chao';
+alert(1);
+alert(chao);
+function tong(a,b){
+    return a+b ;
+}
+console.log(tong(3,5));
+</script>
+</body>
+</html>

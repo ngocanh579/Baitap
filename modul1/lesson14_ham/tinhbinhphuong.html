@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tinh binh phuong 1 so</title>
+</head>
+<body>
+BinhPhuong <input type="text" id="input" oninput="calculate()"> ket qua : <span id="kq"></span>
+<script>
+  function binhpuong(so){
+    var kq = so * so ;
+    return kq ;
+  }
+  function calculate(){
+    var input = document.getElementById("input").value;
+    var kq = binhpuong(input);
+    document.getElementById("kq").innerHTML = kq ;
+  }
+</script>
+</body>
+</html>

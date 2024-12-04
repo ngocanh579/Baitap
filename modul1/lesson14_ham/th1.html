@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo và gọi hàm</title>
+</head>
+<body>
+<script>
+    function processconfirm(a){
+        let kq = "";
+        if(a){
+            kq="tuyet voi . Ban choi game that tot";
+        }
+        else {
+            kq = "choi lai";
+        }
+        return kq ;
+    }
+    let confirma = confirm("ban co muon choi khong");
+    let trl = processconfirm(confirma);
+    alert(trl);
+</script>
+</body>
+</html>

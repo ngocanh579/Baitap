@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đảo ngược các phần tử trong mảng</title>
+</head>
+<body>
+<script>
+  let i = [1,4,7,8,9,10];
+  let first =0 ;
+  let last = i.length -1 ;
+  while ( first < last) {
+    let a = i[first];
+    i[first] = i[last];
+    i[last] = a ;
+    first ++ ;
+    last -- ;
+  }
+  console.log(i);
+</script>
+</body>
+</html>

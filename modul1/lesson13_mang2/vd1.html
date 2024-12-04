@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//   debugger;
+//   const a= [10]; // c1
+//   const array = parseInt((prompt("nhap so luong phan tu cua mang:" )))
+//   const a1 = new Array(array);//c1
+//   // console.log(array.length);//c2 su dung toan tu new
+//   // console.log(a[0]);
+//   console.log(a1);
+//   a.push(1); // thêm cuối mảng
+//   console.log(a);
+//   a.unshift('hoa') ; // thêm đầu mảng
+//   const a = ["hoa hong"];
+//   console.log(a[1]) // lay phan tu hoa hong
+//    // gán biến
+// let xe = a[0];
+const nha = ['nha1', 'nha2','nha3','nha4']
+console.log(nha[1]);
+// to mang 2 chieu
+const a = [
+        [
+                //tang 1
+                [3],[2],[3],
+        ],
+        [
+                [3],[2],[3],//tang2
+        ],
+        [
+                [],
+        ],
+];
+console.log(a);
+//  a[0]=['nha1', 'nha2','nha3','nha4'];
+//  a[1]=['a1', 'a2','a3','a4'];
+// console.log(a[0][1]);
+// console.log(a);
+// const  chungcu =[];
+// chungcu[0] = new Array(12);
+// chungcu[1] = new Array(12);
+// chungcu[0][0] =[3]; // tang1 , phong 1 cos 3 phong
+// console.log(chungcu);
+const lengt =8 ;
+const  ab = new Array(lengt);
+// khoi tao mang
+for(let i= 0; i < lengt ; i++){
+   ab[i] = new Array(lengt);}
+let table ='<table border="1">';
+for(let i = 0 ; i<lengt ; i++) {
+  table += '<tr>';
+  let totalrow = 0;
+  for (let j = 0; j < lengt; j++) {
+    ab[i][j] = Math.floor(Math.random() * 100 + 1);
+
+  }
+}
+console.log(ab);
+</script>
+
+
+</body>
+</html>

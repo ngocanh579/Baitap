@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--// câu lệnh element-->
+<!--<element event="some JavaScript">-->
+<button onclick="document.getElementById('demo').innerHTML = Date()">Thời gian là?</button>
+<div id="demo"></div>
+<button onclick="document.getElementById('demo').innerHTML = Date()">Thời gian là?</button><br>
+<button onclick="this.innerHTML=Date()">Thời gian là?</button><br>
+
+<p>Click</p>
+<button onclick="displayDate()">Bây giờ là ?</button>
+<p id="vd"></p>
+<script>
+  function displayDate() {
+    // Tạo đối tượng Date để lấy ngày và giờ hiện tại
+    const currentDate = new Date();
+    // Hiển thị ngày và giờ trong phần tử có id="vd"
+    document.getElementById("vd").innerHTML = currentDate.toString();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính Ngày Tốt Xấu</title>
+  <style>
+    /* Đặt kiểu dáng cơ bản cho toàn bộ trang */
+    body {
+      font-family: Arial, sans-serif; /* Font chữ mặc định */
+      margin: 20px; /* Khoảng cách bên ngoài phần nội dung */
+      padding: 0; /* Không thêm khoảng cách bên trong */
+      background-color: #f4f4f9; /* Màu nền nhẹ */
+    }
+
+    /* Tiêu đề chính */
+    h1 {
+      text-align: center; /* Canh giữa nội dung */
+      color: #333; /* Màu chữ xám đậm */
+    }
+
+    /* Kiểu dáng cho biểu mẫu */
+    form {
+      text-align: center; /* Canh giữa biểu mẫu */
+      margin-bottom: 20px; /* Thêm khoảng cách dưới biểu mẫu */
+    }
+
+    /* Kiểu dáng cho bảng kết quả */
+    table {
+      width: 100%; /* Chiếm toàn bộ chiều ngang trang */
+      border-collapse: collapse; /* Thu gọn viền giữa các ô */
+      margin-top: 20px; /* Thêm khoảng cách trên bảng */
+    }
+
+    /* Định dạng đường viền và nội dung trong bảng */
+    table, th, td {
+      border: 1px solid #ccc; /* Đường viền nhạt */
+    }
+
+    /* Định dạng nội dung ô */
+    th, td {
+      padding: 10px; /* Khoảng cách bên trong ô */
+      text-align: center; /* Canh giữa nội dung */
+    }
+
+    /* Định dạng tiêu đề bảng */
+    th {
+      background-color: #f0f0f0; /* Nền xám nhạt */
+    }
+
+    /* Định dạng ô cho khắc tốt */
+    .good {
+      background-color: #d4edda; /* Nền xanh nhạt */
+      color: #155724; /* Chữ xanh đậm */
+    }
+
+    /* Định dạng ô cho khắc xấu */
+    .bad {
+      background-color: #f8d7da; /* Nền đỏ nhạt */
+      color: #721c24; /* Chữ đỏ đậm */
+    }
+  </style>
+</head>
+<body>
+<h1>Tính Ngày Tốt Xấu</h1>
+<table>
+  <tr>
+    <th colspan="2">Quy Đổi Giờ Khắc</th>
+  </tr>
+  <tr>
+    <td>Khắc 1</td>
+    <td>11h - 1h</td>
+  </tr><tr>
+    <td>Khắc 2</td>
+    <td>1h - 3h</td>
+  </tr><tr>
+    <td>Khắc 3</td>
+    <td>3h - 5h</td>
+  </tr><tr>
+    <td>Khắc 4</td>
+    <td>5h - 7h</td>
+  </tr><tr>
+    <td>Khắc 5</td>
+    <td>7h - 9h</td>
+  </tr><tr>
+    <td>Khắc 6</td>
+    <td>9h -11h</td>
+  </tr>
+</table>
+<form id="lunarForm">
+  <!-- Biểu mẫu nhập tháng âm lịch -->
+  <label for="lunarMonth">Nhập tháng âm lịch (1-12):</label>
+  <input type="number" id="lunarMonth" name="lunarMonth" min="1" max="12" required>
+  <!-- Nút bấm tính toán -->
+  <button type="button" onclick="calculateLunarDays()">Tính toán</button>
+</form>
+
+<!-- Bảng hiển thị kết quả -->
+<table id="resultTable">
+  <thead>
+  <tr>
+    <th>Ngày</th>
+    <th>Khắc Tốt</th>
+    <th>Khắc Xấu</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+  /* Hàm tính toán các ngày tốt xấu trong tháng âm lịch */
+  function calculateLunarDays() {
+    const lunarMonth = parseInt(document.getElementById('lunarMonth').value); // Lấy giá trị tháng từ ô nhập liệu
+    const daysInMonth = [0, 30, 29, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30]; // Số ngày của từng tháng âm lịch trong năm 2024
+
+    // Kiểm tra xem tháng nhập vào có hợp lệ hay không
+    if (!lunarMonth || lunarMonth < 1 || lunarMonth > 12) {
+      alert('Vui lòng nhập tháng hợp lệ (1-12).'); // Thông báo nếu giá trị không hợp lệ
+      return;
+    }
+
+    const days = daysInMonth[lunarMonth]; // Lấy số ngày của tháng âm lịch từ mảng
+    const tbody = document.querySelector('#resultTable tbody'); // Chọn phần thân của bảng kết quả
+    tbody.innerHTML = ''; // Xóa nội dung cũ trong bảng
+
+    // Lặp qua từng ngày trong tháng
+    for (let x = 1; x <= days; x++) {
+      const goodPeriods = []; // Danh sách các khắc tốt
+      const badPeriods = [];  // Danh sách các khắc xấu
+
+      // Lặp qua từng khắc từ 1 đến 6
+      for (let y = 1; y <= 6; y++) {
+        const result = ((x + lunarMonth + y) - 2) % 6; // Tính toán kết quả
+        if ([1, 2, 5].includes(result)) {
+          goodPeriods.push(`Khắc ${y}`); // Thêm vào danh sách khắc tốt nếu kết quả là 1, 2, 5
+        } else {
+          badPeriods.push(`Khắc ${y}`); // Thêm vào danh sách khắc xấu nếu kết quả là 0, 3, 4
+        }
+      }
+
+      // Tạo một hàng mới trong bảng
+      const row = document.createElement('tr');
+
+      // Tạo cột hiển thị ngày
+      const dayCell = document.createElement('td');
+      dayCell.textContent = `Ngày ${x}`; // Ghi số ngày
+      row.appendChild(dayCell);
+
+      // Tạo cột hiển thị các khắc tốt
+      const goodCell = document.createElement('td');
+      goodCell.textContent = goodPeriods.join(', '); // Ghép các khắc tốt thành chuỗi
+      goodCell.className = 'good'; // Gắn lớp CSS cho khắc tốt
+      row.appendChild(goodCell);
+
+      // Tạo cột hiển thị các khắc xấu
+      const badCell = document.createElement('td');
+      badCell.textContent = badPeriods.join(', '); // Ghép các khắc xấu thành chuỗi
+      badCell.className = 'bad'; // Gắn lớp CSS cho khắc xấu
+      row.appendChild(badCell);
+
+      // Thêm hàng vào bảng
+      tbody.appendChild(row);
+    }
+  }
+</script>
+</body>
+</html>

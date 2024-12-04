@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let year = parseInt(prompt("Nhập một năm"));
+  if (year % 4 == 0) {
+    if (year % 100 == 0) {
+      if (year % 400 == 0) {
+        alert(year + " là năm nhuận");
+      } else {
+        alert(year + " không phải là năm nhuận");
+      }
+    } else {
+      alert(year + " là năm nhuận");
+    }
+  } else {
+    alert(year + " không phải là năm nhuận");
+  }
+// cach kiem tra 2
+//   let year = parseInt(prompt("Nhập một năm"));
+//   let isLeapYear = false;
+//
+//   if (year % 4 == 0) {
+//     if (year % 100 == 0) {
+//       if (year % 400 == 0) {
+//         isLeapYear = true;  // Nếu chia hết cho 400, là năm nhuận
+//       }
+//     } else {
+//       isLeapYear = true;  // Nếu chia hết cho 4 nhưng không chia hết cho 100, là năm nhuận
+//     }
+//   }
+//
+//   if (isLeapYear) {
+//     alert(year + " là năm nhuận");  // Nếu là năm nhuận, thông báo
+//   } else {
+//     alert(year + " không phải là năm nhuận");  // Nếu không phải năm nhuận, thông báo
+//   }
+// cách 3
+//   let year = parseInt(prompt("Nhập một năm"));
+//   let isLeapYear = false;
+//
+//   let isDivisibleBy4 = year % 4 == 0;
+//   if (isDivisibleBy4) {
+//     let isDivisibleBy100 = year % 100 == 0;
+//     if (isDivisibleBy100) {
+//       let isDivisibleBy400 = year % 400 == 0;
+//       if (isDivisibleBy400) {
+//         isLeapYear = true;  // Nếu chia hết cho 400, là năm nhuận
+//       }
+//     } else {
+//       isLeapYear = true;  // Nếu chia hết cho 4 nhưng không chia hết cho 100, là năm nhuận
+//     }
+//   }
+//
+//   if (isLeapYear) {
+//     alert(year + " là năm nhuận");  // Nếu là năm nhuận, thông báo
+//   } else {
+//     alert(year + " không phải là năm nhuận");  // Nếu không phải năm nhuận, thông báo
+//   }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--if (biểu thức điều kiện 1) {-->
+<!--khối mã được thực thi nếu điều kiện 1 là đúng-->
+<!--} else if (biểu thức điều kiện 2) {-->
+<!--khối mã được thực thi nếu điều kiện 1 là sai và điều kiện 2 là đúng-->
+<!--} else {-->
+<!--khối mã được thực thi nếu điều kiện 1 và điều kiện 2 đều sai-->
+<!--}-->
+<script>
+  var date = new Date();
+  // Lấy giờ hiện tại
+  var time = date.getHours();
+  if (time < 10) {
+    kq = "Good morning";
+  } else if (time < 20) {
+    kq = "Good day";
+  } else {
+    kq = "Good evening";
+  }
+  alert(kq);
+</script>
+</body>
+</html>
