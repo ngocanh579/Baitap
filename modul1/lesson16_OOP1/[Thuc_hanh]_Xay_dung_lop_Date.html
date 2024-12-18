@@ -7,43 +7,92 @@
 <body>
 <script>
     // cach 1
-    function Date(ngay, thang, nam){
-        this.ngay = ngay;
-        this.thang = thang;
-        this.nam = nam;
-// ham get
-        this.getNgay = function(){
-            return this.ngay();
-        }
-        this.getThang = function(){
-            return this.thang();
-        }
-        this.getNam = function(){
-            return this.nam();
-        }
-// ham set
-        this.setNgay = function(ngay){
-            this.ngay = ngay;
-        }
-        this.setThang = function(thang){
-            this.thang= thang;
-        }
-        this.setNam = function(){
-            this.nam = nam;
-        }
-        this.display = function(){
-            return ` Ngay:${this.ngay} ,Thang:${this.thang}, Nam ${this.nam} `;
-        };
-    }
-    const date = new Date(17,12,2024);
-    console.log(date.display());
-    date.setNam();
-    date.setNgay();
-    date.setThang();
+//     function Date(ngay, thang, nam){
+//         this.ngay = ngay;
+//         this.thang = thang;
+//         this.nam = nam;
+// // ham get
+//         this.getNgay = function(){
+//             return this.ngay();
+//         }
+//         this.getThang = function(){
+//             return this.thang();
+//         }
+//         this.getNam = function(){
+//             return this.nam();
+//         }
+// // ham set
+//         this.setNgay = function(ngay){
+//             this.ngay = ngay;
+//         }
+//         this.setThang = function(thang){
+//             this.thang= thang;
+//         }
+//         this.setNam = function(){
+//             this.nam = nam;
+//         }
+//         this.display = function(){
+//             return ` Ngay:${this.ngay} ,Thang:${this.thang}, Nam ${this.nam} `;
+//         };
+//     }
+//     const date = new Date(17,12,2024);
+//     console.log(date.display());
+//     date.setNam();
+//     date.setNgay();
+//     date.setThang();
 </script>
 <script>
     // cach 2
     class Date {
+        #day;
+        #thang;
+        #nam;
+        constructor(day, thang, nam) {
+            this.#day = day;
+            this.#thang = thang;
+            this.#nam = nam;
+        }
+        // Getter để lấy giá trị các thuộc tính
+        getDay(){
+            return this.#day;
+        }
+        getThang (){
+            return this.#thang;
+        }
+        getNam(){
+            return this.#nam;
+        }
+        // Setter để cập nhật giá trị các thuộc tính
+        setDay(day){
+            this.#day = day;
+        }
+        setThang(thang){
+            this.#thang = thang;
+        }
+        setNam (nam){
+            this.#nam = nam;
+        }
+        hienthi(){
+             return `Ngay: ${this.#day}, thang: ${this.#thang}, nam: ${this.#nam}`;
+        }
+    }
+    // Sử dụng lớp
+    const myDate = new Date(1, 12, 2024); // Khởi tạo đối tượng với giá trị ban đầu
+    console.log(myDate.hienthi());
+    // Truy xuất giá trị thông qua getter
+    console.log(myDate.getDay());  // Kết quả: 1
+    console.log(myDate.getThang()); // Kết quả: 12
+    console.log(myDate.getNam());   // Kết quả: 2024
+
+    // Thay đổi giá trị thông qua setter
+    myDate.setDay(15);
+    myDate.setThang(10);
+    myDate.setNam(2025);
+
+    // Truy xuất lại giá trị sau khi cập nhật
+    console.log(myDate.getDay());  // Kết quả: 15
+    console.log(myDate.getThang()); // Kết quả: 10
+    console.log(myDate.getNam());   // Kết quả: 2025
 </script>
 </body>
 </html>

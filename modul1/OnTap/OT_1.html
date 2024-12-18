@@ -3,63 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>On Tap</title>
-  <style>
-    table{
-      border-collapse: collapse;
-      width: 100%;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 10px;
-    }
-  </style>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 <h2>Danh Sách Sản Phẩm</h2>
 <div id="total"></div>
 <div id="result"></div>
-  <script>
-    // Sản Phẩm
-    let products =[];
-    class Products{
-      constructor(Masp,Tensp,Gia,SoLuong){
-        this.Masp = Masp;
-        this.Tensp = Tensp;
-        this.Gia = Gia;
-        this.SoLuong = SoLuong;
-      }
+<script>
+    class Products {
+        constructor(maSp, tenSp, gia, soLuong) {
+            if (!maSp || !tenSp || isNaN(gia) || isNaN(soLuong)) {
+                throw new Error('Dữ liệu sản phẩm không hợp lệ!');
+            }
+            this.maSp = maSp;
+            this.tenSp = tenSp;
+            this.gia = Number(gia);
+            this.soLuong = Number(soLuong);
+        }
     }
-    products.push({
-      Masp:'SP01',
-      Tensp:'Hoa',
-      Gia:'14000',
-      SoLuong:'30',
-    })
-    products.push(new Products('SP02','But bi','15000','50'));
-    products.push(new Products('SP03','Thước','10000','35'));
-    products.push(new Products('SP04','Sách Toán','80000','56'));
-    function showProducts(item){
-      return `<tr>
-            <td>${item.Masp}</td>
-            <td>${item['Tensp']}</td>
-            <td>${item['Gia']}</td>
-            <td>${item['SoLuong']}</td>
+
+    let products = [
+        new Products('SP01', 'Hoa', 14000, 30),
+        new Products('SP02', 'Bút bi', 15000, 50),
+        new Products('SP03', 'Thước', 10000, 35),
+        new Products('SP04', 'Sách Toán', 80000, 56),
+    ];
+
+    function showProducts(item) {
+        return `<tr>
+            <td>${item.maSp}</td>
+            <td>${item.tenSp}</td>
+            <td>${item.gia}</td>
+            <td>${item.soLuong}</td>
         </tr>`;
     }
-    const result = document.getElementById("result");
-    document.getElementById("total").innerHTML = `<p>Tổng số Sản Phẩm : ${products.length}</p>`;
-    let table = '<table><tr><th>Mã Sản Phẩm</th><th>Tên Sản Phẩm</th><th>Giá Sản Phẩm</th><th>Số Lượng </th></tr>';
+
+    function updateTotal(products) {
+        document.getElementById("total").innerHTML = `<p>Tổng số Sản Phẩm: ${products.length}</p>`;
+    }
+
+    let table = '<table><tr><th>Mã Sản Phẩm</th><th>Tên Sản Phẩm</th><th>Giá Sản Phẩm</th><th>Số Lượng</th></tr>';
     for (let i = 0; i < products.length; i++) {
-      table += `<tr>
-            <td>${products[i].Masp}</td>
-            <td>${products[i].Tensp}</td>
-            <td>${products[i]['Gia']}</td>
-            <td>${products[i]['SoLuong']}</td>
-        </tr>`;
+        table += showProducts(products[i]);
     }
     table += '</table>';
-    result.innerHTML = table;
-    console.log(products);
-  </script>
+
+    document.getElementById("result").innerHTML = table;
+    updateTotal(products);
+</script>
 </body>
 </html>

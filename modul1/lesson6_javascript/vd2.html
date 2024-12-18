@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhúng 3 Kiểu JavaScript</title>
+
+    <!-- Internal JavaScript: nhúng JavaScript trực tiếp trong thẻ <script> -->
+    <script>
+        function showInternalMessage() {
+            alert('Xin chào từ Internal JavaScript!');
+        }
+    </script>
+
+    <!-- External JavaScript: liên kết với file bên ngoài (script.js) -->
+    <script src="script.js"></script>
 </head>
 <body>
+
+<!-- Inline JavaScript: nhúng trực tiếp trong thuộc tính HTML -->
+<button onclick="alert('Xin chào từ Inline JavaScript!')">Click me (Inline)</button>
+
+<!-- nút sử dụng Internal JavaScript -->
+<button onclick="showInternalMessage()">Click me (Internal)</button>
+
+<!-- nút sử dụng External JavaScript -->
+<button onclick="showExternalMessage()">Click me (External)</button>
 
 </body>
 </html>

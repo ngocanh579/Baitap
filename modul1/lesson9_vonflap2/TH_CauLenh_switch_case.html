@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Câu lệnh switch-case</title>
 </head>
 <body>
-$END$
+<input type="number" id="month" name="month" value="" placeholder="thang" required>
+<input type="button" onclick="thangle()" name="btn" value="Tính Số Ngày">
+<p id="result"></p> <!-- Hiển thị kết quả ở đây -->
+<script>
+  function thangle() {
+    var month = document.getElementById("month").value;
+    var days ;
+    // chuyen doi gia tri sang kieu so
+    month =parseInt(month);
+    if(month <1 && month > 12) {
+      alert("Vui long nhap lai thang tu 1 den 12");
+      return; // dung
+    }
+    switch (month) {
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:
+        days=31;
+        break;
+      case 4 ,6 ,9 ,11:
+        days=30;
+        break;
+      case 2 :
+        days= "28 hoặc 29" ;
+        break;
+    default:
+        days="thang khong hop le";
+        break;
+    }
+    document.getElementById("result").innerHTML = "Thang "+ month +" co "+ days + " ngay ";
+  }
+</script>
 </body>
 </html>

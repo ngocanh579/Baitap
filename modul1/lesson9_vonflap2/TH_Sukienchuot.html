@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Sự Kiện chuột _ Sự Kiện bàn phím </title>
 </head>
-<body>
-$END$
+<body onload="xuly()">
+<form>
+  <img id="myImg" src="../img/images.jpg" width="200" height="200"  >
+  <p>Click vào nút để di chuyển sang phải</p>
+  <input type="button" onclick="moveRight()" value="Phải">
+  <input type="button" onclick="moveLeft()" value="Trái"></input>
+</form>
+<script>
+   function myImg() {
+     var img = document.getElementById("myImg");
+     img.style.position ='relative';
+     img.style.left = '0px';
+     img.style.right = '0px';
+   }
+   function moveRight() {
+     var img = document.getElementById("myImg");
+     img.style.left =parseInt(img.style.left) + 10 + 'px';
+   }
+   function moveLeft() {
+     var img = document.getElementById("myImg");
+     img.style.left=parseInt(img.style.left) - 10 + 'px';
+   }
+  function moveup() {
+    var img = document.getElementById("myImg");
+    img.style.top=parseInt(img.style.top) - 10 + 'px';
+  }
+  function movedown() {
+    var img = document.getElementById("myImg");
+    img.style.top=parseInt(img.style.top) - 10 + 'px';
+  }
+  function selection(evt) {
+     switch (evt.keyCode) {
+       case 37:
+         moveLeft();
+         break;
+       case 39:
+         moveRight();
+         break ;
+       case 38:
+         moveup();
+         break;
+       case 40:
+         movedown();
+         break;
+     }
+  }
+  function xuly() {
+     window.addEventListener('keydown', selection);
+  }
+  window.onload =myImg();
+</script>
 </body>
 </html>

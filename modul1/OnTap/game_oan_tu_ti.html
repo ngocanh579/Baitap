@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Oản Tù Tì</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e5f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6a1b9a;
+            font-size: 48px;
+        }
+
+        h2 {
+            color: #4a148c;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .nut-bam {
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .nut-bam:hover {
+            background-color: #4a148c;
+        }
+
+        .canh-bao {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .an {
+            display: none;
+        }
+
+        .khung {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .khung-anh {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .anh {
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .anh:hover {
+            transform: scale(1.1);
+        }
+
+        .tay {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .hinh-tay {
+            width: 100px;
+            height: 100px;
+            transition: transform 0.5s;
+        }
+
+        .lac {
+            animation: lac 0.5s ease;
+        }
+
+        @keyframes lac {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+        }
+    </style>
+</head>
+<body>
+<!-- Màn hình chính -->
+<div id="man-hinh-chinh">
+    <h1>Game Oản Tù Tì</h1>
+    <h2>Chơi vui cùng bạn bè</h2>
+    <button class="nut-bam" onclick="batDauGame()">Bắt đầu chơi</button>
+    <div class="canh-bao">
+        <p>Trò chơi phù hợp với mọi lứa tuổi</p>
+        <p>Chơi quá 180 phút mỗi ngày có thể ảnh hưởng tới sức khỏe</p>
+    </div>
+</div>
+
+<!-- Màn hình chơi game -->
+<div id="man-choi-game" class="an">
+    <div class="khung">
+        <h1>Oản Tù Tì</h1>
+        <div class="khung-anh">
+            <img src="/mnt/data/image.png" alt="Búa" class="anh" onclick="chonNguoiChoi('bua')">
+            <img src="/mnt/data/image.png" alt="Bao" class="anh" onclick="chonNguoiChoi('bao')">
+            <img src="/mnt/data/image.png" alt="Kéo" class="anh" onclick="chonNguoiChoi('keo')">
+        </div>
+        <div class="tay">
+            <img src="/mnt/data/image.png" alt="Tay trái" class="hinh-tay" id="tayTrai">
+            <img src="/mnt/data/image.png" alt="Tay phải" class="hinh-tay" id="tayPhai">
+        </div>
+        <h2 id="ket-qua"></h2>
+        <h3 id="diem-so"></h3>
+    </div>
+</div>
+
+<!-- Màn hình kết thúc -->
+<div id="man-ket-thuc" class="an">
+    <div class="khung">
+        <h1>Kết Quả Cuối Cùng</h1>
+        <h2 id="ket-qua-cuoi"></h2>
+        <button class="nut-bam" onclick="choiLai()">Chơi lại</button>
+        <button class="nut-bam" onclick="troVeTrangChinh()">Trang chủ</button>
+    </div>
+</div>
+
+<script>
+    let diemNguoiChoi = 0;
+    let diemMay = 0;
+    let luotChoi = 0;
+    const luotChoiToiDa = 5;
+
+    function batDauGame() {
+        document.getElementById('man-hinh-chinh').classList.add('an');
+        document.getElementById('man-choi-game').classList.remove('an');
+    }
+
+    function chonNguoiChoi(luaChon) {
+        if (luotChoi >= luotChoiToiDa) {
+            return;
+        }
+        const tayTrai = document.getElementById('tayTrai');
+        const tayPhai = document.getElementById('tayPhai');
+        tayTrai.classList.add('lac');
+        tayPhai.classList.add('lac');
+
+        setTimeout(() => {
+            tayTrai.classList.remove('lac');
+            tayPhai.classList.remove('lac');
+            choiLuot(luaChon);
+        }, 500);
+    }
+
+    function choiLuot(luaChonNguoi) {
+        const luaChonMay = ['bua', 'bao', 'keo'][Math.floor(Math.random() * 3)];
+        let ketQua = '';
+
+        if (luaChonNguoi === luaChonMay) {
+            ketQua = "Hòa!";
+        } else if (
+            (luaChonNguoi === 'bua' && luaChonMay === 'keo') ||
+            (luaChonNguoi === 'bao' && luaChonMay === 'bua') ||
+            (luaChonNguoi === 'keo' && luaChonMay === 'bao')
+        ) {
+            ketQua = "Bạn thắng!";
+            diemNguoiChoi++;
+        } else {
+            ketQua = "Bạn thua!";
+            diemMay++;
+        }
+
+        luotChoi++;
+        document.getElementById('ket-qua').innerText = `Lượt ${luotChoi}: Bạn chọn ${luaChonNguoi}, Máy chọn ${luaChonMay}. ${ketQua}`;
+        document.getElementById('diem-so').innerText = `Điểm của bạn: ${diemNguoiChoi}, Điểm của máy: ${diemMay}`;
+
+        if (luotChoi >= luotChoiToiDa) {
+            ketThucGame();
+        }
+    }
+
+    function ketThucGame() {
+        const ketQuaCuoi = diemNguoiChoi > diemMay ? "Bạn là người chiến thắng!" :
+            diemNguoiChoi < diemMay ? "Bạn đã thua cuộc!" : "Trò chơi hòa!";
+        document.getElementById('man-choi-game').classList.add('an');
+        document.getElementById('man-ket-thuc').classList.remove('an');
+        document.getElementById('ket-qua-cuoi').innerText = ketQuaCuoi;
+    }
+
+    function choiLai() {
+        diemNguoiChoi = 0;
+        diemMay = 0;
+        luotChoi = 0;
+        document.getElementById('ket-qua').innerText = '';
+        document.getElementById('diem-so').innerText = '';
+        document.getElementById('man-choi-game').classList.remove('an');
+        document.getElementById('man-ket-thuc').classList.add('an');
+    }
+
+    function troVeTrangChinh() {
+        choiLai();
+        document.getElementById('man-ket-thuc').classList.add('an');
+        document.getElementById('man-hinh-chinh').classList.remove('an');
+    }
+</script>
+</body>
+</html>

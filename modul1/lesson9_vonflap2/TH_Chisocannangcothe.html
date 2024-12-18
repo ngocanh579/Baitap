@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Tính chỉ số cân nặng của cơ thể</title>
 </head>
 <body>
-$END$
+<script>
+  var cannang = prompt("nhap can nang","");
+  var chieucao = prompt("nhap chieu cao","");
+  var bmi = cannang/(chieucao*chieucao);
+  alert(bmi.toFixed(2));
+  if(bmi<18){
+    document.write("Underweight");
+  }else if(bmi>18 && bmi<=25){
+    document.write("Normal");
+  }else if(bmi>25 && bmi<=30){
+    document.write("Overweight");
+  }
+  else{
+    document.write("Obese");
+  }
+</script>
 </body>
 </html>
